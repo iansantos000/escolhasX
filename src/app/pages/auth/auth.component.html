@@ -1,0 +1,131 @@
+<div class="row authRow">
+  <div class="col offset-m3 m6 s12">
+    <ul class="tabs tabs-fixed-width">
+      <li class="tab col s3"><a href="#tabLogin">Login</a></li>
+      <li class="tab col s3"><a href="#tabRegister">Registrar</a></li>
+    </ul>
+  </div>
+
+
+  <div id="tabLogin" class="col offset-m3 m6 s12">
+    <!-- TAB LOGIN-->
+    <div id="login-tab" class="row">
+      <div class="col s12 z-depth-4 card-panel">
+          <form class="login-form" (ngSubmit)="onSubmitLogin(fLogin)" #fLogin="ngForm">
+              <div class="row">
+                <div class="input-field col s12 center">
+                  <H2>LOGIN</H2>
+                  <!-- <img src="images/login-logo.png" alt="" class="circle responsive-img valign profile-image-login"> -->
+                  <p class="center login-form-text">Escolhas Fotos</p>
+                </div>
+              </div>
+              <!-- <div class="row margin">
+                <div class="input-field form-group col s12">
+                  <i class="mdi-social-person-outline prefix"></i>
+                  <input type="text" id="regUser" name="regUser" ngModel class="form-control" required>
+                  <label for="regUser" class="center-align ">Username</label>
+                </div>
+              </div> -->
+              <div class="row margin">
+                <div class="input-field form-group col s12">
+                  <i class="mdi-social-person-outline prefix"></i>
+                  <input type="email" id="loginEmail" name="loginEmail" ngModel class="form-control" required>
+                  <label for="loginEmail" class="center-align">e-mail</label>
+                </div>
+              </div>
+              <div class="row margin">
+                <div class="input-field form-group col s12">
+                  <i class="mdi-action-lock-outline prefix"></i>
+                  <input type="password" id="loginPassword" name="loginPassword" ngModel class="form-control" required>
+                  <label for="loginPassword">Password</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 m12 l12  login-text">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <button type="submit" mz-button class="btn waves-effect waves-light col s12">
+                    LOGIN
+                  </button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6 m6 l6">
+                  <p class="margin medium-small"><a href="#" target="_self">Não é cadastrado?</a></p>
+                </div>
+                <div class="input-field col s6 m6 l6">
+                  <p class="margin right-align medium-small"><a href="#">Forgot password ?</a></p>
+                </div>
+              </div>
+
+            </form>
+      </div>
+    </div>
+  </div> <!-- / TAB LOGIN-->
+
+
+  <div id="tabRegister" class="col offset-m3 m6 s12">
+    <!-- TAB REGISTRAR-->
+    <div id="register-tab" class="row">
+      <div class="col s12 z-depth-4 card-panel">
+        <form class="register-form" (ngSubmit)="onSubmitRegister(f)" #f="ngForm">
+          <div class="row">
+            <div class="input-field col s12 center">
+              <H2>Registrar</H2>
+              <!-- <img src="images/login-logo.png" alt="" class="circle responsive-img valign profile-image-login"> -->
+              <p class="center login-form-text">Escolhas Fotos</p>
+            </div>
+          </div>
+          <div class="row margin">
+            <div class="input-field form-group col s12">
+              <i class="mdi-social-person-outline prefix"></i>
+              <input type="text" id="regUser" name="regUser" ngModel class="form-control" required>
+              <label for="regUser" class="center-align ">Username</label>
+            </div>
+          </div>
+          <div class="row margin">
+            <div class="input-field form-group col s12">
+              <i class="mdi-social-person-outline prefix"></i>
+              <input type="email" id="regEmail" name="regEmail" ngModel class="form-control" required>
+              <label for="regEmail" class="center-align">e-mail</label>
+            </div>
+          </div>
+          <div class="row margin">
+            <div class="input-field form-group col s12">
+              <i class="mdi-action-lock-outline prefix"></i>
+              <input type="password" id="regPassword" name="regPassword" ngModel class="form-control" required>
+              <label for="regPassword">Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12 m12 l12  login-text">
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <button type="submit" mz-button class="btn waves-effect waves-light col s12">
+                REGISTRAR
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6 m6 l6">
+              <p class="margin medium-small"><a href="#" target="_self">Ja é cadastrado?</a></p>
+            </div>
+            <div class="input-field col s6 m6 l6">
+              <p class="margin right-align medium-small"><a href="#">Forgot password ?</a></p>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div><!-- / TAB REGISTRAR-->
+</div>
+
+
+
