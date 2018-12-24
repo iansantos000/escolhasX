@@ -1,0 +1,48 @@
+@import '~@angular/material/theming';
+
+.sidenav-container {
+  height: 100%;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+mat-sidenav {
+  width: 20em;
+}
+
+.nav-link-space {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar a {
+  display: inline-block;
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+  mat-sidenav {
+    display: none;
+  }
+
+  .togleButtonMenu {
+    display: none;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .mat-toolbar a {
+    display: none;
+  }
+
+  .mat-toolbar span{
+    display: inline;
+  }
+}

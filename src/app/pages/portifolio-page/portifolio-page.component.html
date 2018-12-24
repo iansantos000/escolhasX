@@ -1,0 +1,26 @@
+<ul>
+  <li *ngFor = "let portfolios of portifoliosNameList">
+      {{ portfolios.key }}
+  </li>
+</ul>
+
+<!-- <ul *ngFor = "let portfoliosCapa of portifolioCapaData">
+  <li *ngIf=  "portfoliosCapa.capa" >
+    <img [src]="portfoliosCapa.imagem" >
+      {{ portfoliosCapa.capa }}
+  </li>
+</ul> -->
+
+
+<div *ngFor="let portfoliosCapa of portifolioCapaData" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+  <mat-card *ngIf="portfoliosCapa.capa"   class="card-picture">
+    <div  >
+      <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+        <span fxFlex="80%">{{portfoliosCapa.key}}</span>
+        <mat-icon fxFlex="10%">mode_edit</mat-icon>
+        <mat-icon fxFlex="10%">delete</mat-icon>
+      </mat-card-title>
+      <img mat-card-image [src]="portfoliosCapa.imagem">
+    </div>
+  </mat-card>
+</div>

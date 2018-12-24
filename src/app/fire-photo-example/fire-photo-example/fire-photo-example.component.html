@@ -1,0 +1,42 @@
+<div class="profile-pic-container">
+
+  <fire-photo id="coverPic"
+              [resizeWidth]="500"
+              [uniqueName]="false"
+              [paramDir]="'xx'"
+              [paramName]="'zz.jpg'"
+              [disabled]="coverPhotoDisabled"
+              [(value)]="coverPhoto"
+              (complete)="coverPhotoDisabled = true"
+              (error)="onError($event)">
+    Upload Cover Photo
+  </fire-photo>
+
+  <div class="container">
+    <fire-photo id="profilePic"
+                [value]="profilePhoto"
+                [disabled]="profilePhotoDisabled"
+                [thumbHeight]="200"
+                [thumbWidth]="200"
+                (complete)="profilePhotoDisabled = true"
+                (error)="onError($event)">
+      Upload Profile Photo
+    </fire-photo>
+
+    <div class="my-3 float-right">
+      <button *ngIf="!(profilePhotoDisabled && coverPhotoDisabled)" class="btn" (click)="cancel()">
+        Cancel
+      </button>
+
+      <button *ngIf="!(profilePhotoDisabled && coverPhotoDisabled)" class="btn btn-orange" (click)="upload()">
+        Save Changes
+      </button>
+
+      <button *ngIf="profilePhotoDisabled && coverPhotoDisabled" class="btn btn-orange" (click)="edit()">
+        Edit Profile
+      </button>
+    </div>
+
+  </div>
+
+</div>

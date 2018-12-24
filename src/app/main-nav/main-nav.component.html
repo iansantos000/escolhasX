@@ -1,0 +1,84 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav  #drawer
+                class="mat-drawer-container"
+                fixedInViewport="false"
+                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+                [mode]="(isHandset$ | async) ? 'over' : 'side'"
+                [opened]="!(isHandset$ | async)"
+                >
+    <mat-toolbar>SideMenu</mat-toolbar>
+    <mat-nav-list class="sidenavList">
+      <!-- User Logado -->
+      <a *ngIf="isLoggedIn" mat-list-item routerLink="/escolhas" (click)="drawer.close()">Escolha Criar</a>
+      <a *ngIf="isLoggedIn" mat-list-item routerLink="/cadastrar-ensaio">Cadastrar Ensaio</a>
+      <!-- User Não logado -->
+      <a *ngIf="!isLoggedIn" mat-list-item  routerLink="/sobre" (click)="drawer.close()">Sobre</a>
+      <a *ngIf="!isLoggedIn" mat-list-item  routerLink="/contato" (click)="drawer.close()">Contato</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <!-- Button Hamburguer para abrir side Menu -->
+      <button type="button"
+              class="togleButtonMenu"
+              aria-label="Toggle sidenav"
+              mat-icon-button (click)="drawer.toggle()"
+              *ngIf="isHandset$ | async"
+              >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+      <span class="nav-link-space" routerLink="/home">Escolhasx-Angular7</span>
+
+      <span class="nav-link-space"></span>
+      <!-- User logado -->
+      <!-- <a *ngIf="isLoggedIn" routerLink="/uploads">UpLoads</a>
+      <a *ngIf="isLoggedIn" routerLink="/uploads-exe">UpLoadsEXE</a> -->
+      <a *ngIf="isLoggedIn" routerLink="/cadastrar-ensaio">Cadastrar Ensaio</a>
+      <a *ngIf='isLoggedIn' routerLink='/cadastrar-portifolios'>Cadastrar Portifólios</a>
+      <a *ngIf="isLoggedIn" routerLink="/portifolios">Portifolios</a>
+
+      <!-- User Não logado -->
+      <a *ngIf="!isLoggedIn" routerLink="/sobre">Sobre</a>
+      <a *ngIf="!isLoggedIn" routerLink="/contato">Contato</a>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <div *ngIf="isLoggedIn">
+          <button mat-menu-item>
+            <mat-icon>face</mat-icon>
+            <span>{{name}}</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>alternate_email</mat-icon>
+            <span>{{email}}</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            <span>{{uid}}</span>
+          </button>
+          <button mat-menu-item (click)="onLogout()">
+            <mat-icon>clear</mat-icon>
+            <span>Logout</span>
+          </button>
+        </div>
+        <div *ngIf="!isLoggedIn">
+          <button>
+            <a routerLink="/login">Login</a>
+          </button>
+        </div>
+      </mat-menu>
+
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <div class="container">
+      <app-notification></app-notification>
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

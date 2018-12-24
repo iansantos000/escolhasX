@@ -1,0 +1,165 @@
+
+
+<div class="row row-cadPortiolios z-depth-4">
+    <ul>
+        <li *ngFor="let item of items | async">
+          {{ item.name }}
+        </li>
+      </ul>
+
+    <div class="input-field col s12">
+      <button type="submit" mat-raised-button color="primary" class="col s3" (click)="uploadPortifolio.start(); uploadCapa.start();">
+        CADASTRAR
+      </button>
+      <button type="submit" mat-raised-button color="primary" class="col s3" (click)="uploadPortifolio.cancel(); uploadCapa.cancel()">
+        CANCELAR
+      </button>
+      <button type="submit" mat-raised-button color="primary" class="col s3" (click)="uploadPortifolio.pause(); uploadCapa.pause()">
+        PAUSAR
+      </button>
+      <button type="submit" mat-raised-button color="primary" class="col s3" (click)="uploadPortifolio.resume(); uploadCapa.resume()">
+        CONTINUAR
+      </button>
+    </div>
+
+      <form >
+        <div class="col s12 ">
+          <mat-form-field class="col-full-width">
+            <input  matInput
+                    placeholder="Nome do Portifólio"
+                    form-group
+                    [(ngModel)]="paramDirPortifolio"
+                    aria-describedby = "paramDirPortifolio"
+                    id="namePortifolio"
+                    name="namePortifolio"
+                    >
+          </mat-form-field>
+          <mat-radio-group  [(ngModel)]="uidUser"
+                            [ngModelOptions]="{standalone: true}"
+                            >
+            <mat-radio-button value={{uid}}
+                              id="uid"
+                              name="uid"
+                              >
+                              UID
+            </mat-radio-button>
+            <mat-radio-button value={{name}}
+                              id="name"
+                              name="name"
+                              >
+                              Name
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="col s12">
+          <mat-form-field class="col-full-width">
+            <textarea matInput
+                      placeholder="Sub Texto portifólio"
+                      form-group
+                      [(ngModel)]="textPortifolio"
+                      id="textPortifolio"
+                      name="textPortifolio"
+                      >
+            </textarea>
+          </mat-form-field>
+        </div>
+      </form>
+      <div class="col s12 capa-portifolio-div">
+        <fire-manager #uploadCapa id="capa-portifolio"
+          [showDetails]="true"
+          [showProgress]="true"
+          [uniqueName]="uniqueName"
+          [dropZone]="dropZone"
+          [multiple]="false"
+          [paramDir]="uidUser + '/' + 'PORTIFOLIOS' + '/' + paramDirPortifolio + '/' + paramDirPortifolioCapa"
+          [paramName]="paramName"
+          [accept]="accept"
+          [parallelUploads]="parallelUploads"
+          [thumbs]="thumbs"
+          [maxFilesCount]="maxFilesCount"
+          [maxFileSize]="maxFilesCount"
+          [thumbWidth]="thumbWidthCapa"
+          [thumbHeight]="thumbHeightCapa"
+          [resizeWidth]="resizeWidth"
+          [resizeHeight]="resizeHeight"
+          [resizeMethod]="resizeMethod"
+          (files)="onFilesCapa($event)"
+          (progress)="onProgressCapa($event)"
+          (success)="onSuccessCapa($event)"
+          (complete)="onCompleteCapa($event)"
+          (error)="onError($event)"
+        >
+        </fire-manager>
+        <div class="col s12">
+          <div class="col s4">
+            <span>Files Count: {{ fileCapa.length }}</span>
+          </div>
+          <div class="col s4">
+            <span>Transfer progressCapa: {{ progressCapa?.bytesTransferred | fileSize }} / {{ progressCapa?.totalBytes | fileSize }}</span>
+          </div>
+          <div class="col s4">
+            <span>Transfer Percentage: {{ progressCapa?.percentage }}%</span>
+          </div>
+        </div>
+        <div class="col m12">
+          <mat-progress-bar mode="determinate" value="progressCapa?.percentage"></mat-progress-bar>
+        </div>
+      </div>
+
+      <div class="col s12">
+        <div class="col s12">
+          <h5>Uploader State</h5>
+
+          <pre>
+            <span>Files Count: {{ files.length }}</span>
+            <span>Transfer Progress: {{ progress?.bytesTransferred | fileSize }} / {{ progress?.totalBytes | fileSize }}</span>
+            <span>Transfer Percentage: {{ progress?.percentage }}%</span>
+            <span>Active: <b [style.color]="active ? 'green' : 'red'">{{ active }}</b></span>
+          </pre>
+
+
+          <div class="col m12">
+            <mat-progress-bar mode="determinate" value="progress?.percentage"></mat-progress-bar>
+          </div>
+
+          <p>
+            <a *ngFor="let link of links" href="{{link}}"> {{link}} </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="col s12">
+        <fire-manager #uploadPortifolio
+          [showDetails]="true"
+          [showProgress]="true"
+          [uniqueName]="uniqueName"
+          [dropZone]="dropZone"
+          [multiple]="multiple"
+          [paramDir]="uidUser + '/' + 'PORTIFOLIOS' + '/' + paramDirPortifolio"
+          [paramName]="paramName"
+          [accept]="accept"
+          [parallelUploads]="parallelUploads"
+          [thumbs]="thumbs"
+          [maxFilesCount]="maxFilesCount"
+          [maxFileSize]="maxFilesCount"
+          [thumbWidth]="thumbWidth"
+          [thumbHeight]="thumbHeight"
+          [resizeWidth]="resizeWidth"
+          [resizeHeight]="resizeHeight"
+          [resizeMethod]="resizeMethod"
+          (files)="onFiles($event)"
+          (progress)="onProgress($event)"
+          (active)="onActive($event)"
+          (value)="onValue($event)"
+          (remove)="onRemove($event)"
+          (cancel)="onCancel($event)"
+          (reset)="onReset()"
+          (success)="onSuccessPortifolio($event)"
+          (complete)="onComplete($event)"
+          (error)="onError($event)"
+        >
+        </fire-manager>
+      </div>
+
+
+</div>

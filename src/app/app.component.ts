@@ -1,23 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent implements OnInit {
-  title = 'app';
+  title = 'Escolhasx-Angular7';
+
+
 
   ngOnInit() {
-  const config = {
-    apiKey: 'AIzaSyCb1NWjg-fRC4Ew6JQVXBDc0uJFIRF2qn4',
-    authDomain: 'escolhasfirebase.firebaseapp.com',
-    databaseURL: 'https://escolhasfirebase.firebaseio.com',
-    projectId: 'escolhasfirebase',
-    storageBucket: 'escolhasfirebase.appspot.com',
-    messagingSenderId: '221937898178'
-  };
-  firebase.initializeApp(config);
+    firebase.initializeApp(environment.firebase);
   }
 }
